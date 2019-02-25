@@ -1,5 +1,7 @@
-import webbrowser
+from flask import Flask
+app = Flask(__name__)
 
-webbrowser.open_new_tab("http://google.com")
 
-print("hello world from Yuma!")
+@app.route("/")
+def hello():
+    return "Hello Worldie!"
