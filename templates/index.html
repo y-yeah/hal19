@@ -1,111 +1,30 @@
 <!DOCTYPE html>
 <head>
-  <title>Polyglottal Yuma</title>
+  <title>HAL19</title>
   <meta charset="utf-8" />
+  <link rel="icon" href="../static/img/halFavicon.png" />
+  <link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='css/index.css') }}"
+  />
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="{{ url_for('static', filename='js/index.js') }}"></script>
 </head>
 <body>
-  <div>
-    <img id="frame" src="{{ url_for('video') }}" width="100%" />
-    <!-- <button id="button">HELLO WORLDIE</button> -->
-    <h1>Here are the people who passed in front of me.</h1>
-    <div id="photo"></div>
+  <div id="whole">
+    <header>
+      <img id="title" src="../static/img/hal2019.png" alt="HAL 2019 Face Detector"></img>
+    </header>
+    <main id="container">
+      <div id="live">
+        <h1>LIVE</h1>
+        <img id="frame" src="{{ url_for('video') }}" width="100%" />
+        <p id="dscr">0 faces have been detected.</p>
+      </div>
+      <div id="records">
+        <h1>RECORDS</h1>
+        <div id="photo"></div>
+      </div>
+    </main>
   </div>
-  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-  <script>
-    let count = 0;
-    window.onload = () => {
-      const capturePic = () => {
-        const photo = document.getElementById("photo");
-        // const button = document.getElementById("button");
-        // button.addEventListener("click", () => {
-        axios
-          .get("/photo", {
-            crossorigin: true,
-            headers: {
-              "Access-Control-ALlow-Origin": "*"
-            }
-          })
-          .then(res => {
-            console.log(res);
-            // const arrayBufferToBase64 = buffer => {
-            //   let binary = "";
-            //   let bytes = new Uint8Array(buffer);
-            //   let len = bytes.byteLength;
-            //   for (var i = 0; i < len; i++) {
-            //     binary += String.fromCharCode(bytes[i]);
-            //   }
-            //   return window.btoa(binary);
-            // };
-            const arrayBufferToBase64 = arrayBuffer => {
-              let base64 = "";
-              const encodings =
-                "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
-
-              const bytes = new Uint8Array(arrayBuffer);
-              const byteLength = bytes.byteLength;
-              const byteRemainder = byteLength % 3;
-              const mainLength = byteLength - byteRemainder;
-
-              let a, b, c, d;
-              let chunk;
-
-              // Main loop deals with bytes in chunks of 3
-              for (var i = 0; i < mainLength; i = i + 3) {
-                // Combine the three bytes into a single integer
-                chunk = (bytes[i] << 16) | (bytes[i + 1] << 8) | bytes[i + 2];
-
-                // Use bitmasks to extract 6-bit segments from the triplet
-                a = (chunk & 16515072) >> 18; // 16515072 = (2^6 - 1) << 18
-                b = (chunk & 258048) >> 12; // 258048   = (2^6 - 1) << 12
-                c = (chunk & 4032) >> 6; // 4032     = (2^6 - 1) << 6
-                d = chunk & 63; // 63       = 2^6 - 1
-
-                // Convert the raw binary segments to the appropriate ASCII encoding
-                base64 +=
-                  encodings[a] + encodings[b] + encodings[c] + encodings[d];
-              }
-
-              // Deal with the remaining bytes and padding
-              if (byteRemainder === 1) {
-                chunk = bytes[mainLength];
-
-                a = (chunk & 252) >> 2; // 252 = (2^6 - 1) << 2
-
-                // Set the 4 least significant bits to zero
-                b = (chunk & 3) << 4; // 3   = 2^2 - 1
-
-                base64 += encodings[a] + encodings[b] + "==";
-              } else if (byteRemainder === 2) {
-                chunk = (bytes[mainLength] << 8) | bytes[mainLength + 1];
-
-                a = (chunk & 64512) >> 10; // 64512 = (2^6 - 1) << 10
-                b = (chunk & 1008) >> 4; // 1008  = (2^6 - 1) << 4
-
-                // Set the 2 least significant bits to zero
-                c = (chunk & 15) << 2; // 15    = 2^4 - 1
-
-                base64 += encodings[a] + encodings[b] + encodings[c] + "=";
-              }
-
-              return base64;
-            };
-            for (let i = count; i < res.data.length; i++) {
-              const face = document.createElement("img");
-              face.setAttribute(
-                "src",
-                "data:image/jpg;base64, " + arrayBufferToBase64(res.data[i])
-              );
-              face.setAttribute("width", "100px");
-              photo.appendChild(face);
-              count++;
-            }
-          })
-          .catch(err => {
-            console.log(err);
-          });
-        // });
-      };
-      setInterval(capturePic, 10);
-    };
-  </script>
 </body>
