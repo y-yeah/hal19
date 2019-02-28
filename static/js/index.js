@@ -2,8 +2,6 @@ let count = 0;
 window.onload = () => {
   const capturePic = () => {
     const photo = document.getElementById("photo");
-    // const button = document.getElementById("button");
-    // button.addEventListener("click", () => {
     axios
       .get("/photo", {
         crossorigin: true,
@@ -12,7 +10,6 @@ window.onload = () => {
         }
       })
       .then(res => {
-        console.log(res);
         axios
           .get("/photo/date", {
             crossorigin: true,
@@ -21,17 +18,6 @@ window.onload = () => {
             }
           })
           .then(nowRes => {
-            console.log(nowRes);
-
-            // const arrayBufferToBase64 = buffer => {
-            //   let binary = "";
-            //   let bytes = new Uint8Array(buffer);
-            //   let len = bytes.byteLength;
-            //   for (var i = 0; i < len; i++) {
-            //     binary += String.fromCharCode(bytes[i]);
-            //   }
-            //   return window.btoa(binary);
-            // };
             const arrayBufferToBase64 = arrayBuffer => {
               let base64 = "";
               const encodings =
@@ -85,40 +71,45 @@ window.onload = () => {
 
               return base64;
             };
-            for (let i = count; i < res.data.length; i++) {
+
+            for (let i = count; i < res.data.length; i++, count++) {
               const hvrbox = document.createElement("div");
               const hvrbox_layer_top = document.createElement("div");
               const hvrbox_text = document.createElement("a");
+              let nowString = "";
+
               hvrbox.className = "hvrbox";
+              hvrbox_layer_top.className = "hvrbox_layer_top";
+              hvrbox_text.className = "hvrtxt";
+
               hvrbox.setAttribute(
                 "style",
                 `background-image: url("data:image/jpg;base64, ${arrayBufferToBase64(
                   res.data[i]
                 )}")`
               );
-              let nowString = "";
+
               nowRes.data[i].forEach(char => {
                 if (char !== ",") {
                   nowString += char;
                 }
               });
-              hvrbox_layer_top.className = "hvrbox_layer_top";
-              hvrbox_text.className = "hvrtxt";
               hvrbox_text.innerText = nowString;
+
               hvrbox_layer_top.appendChild(hvrbox_text);
               hvrbox.appendChild(hvrbox_layer_top);
               photo.appendChild(hvrbox);
-              count++;
             }
+
             document.getElementById("dscr").innerText =
               res.data.length + " faces have been detected.";
           })
           .catch(err => {
-            console.log(err);
+            console.err(err);
           });
       })
       .catch(err => {
-        console.log(err);
+        console.err(err);
       });
   };
   setInterval(capturePic, 10);
