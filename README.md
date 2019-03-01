@@ -28,7 +28,7 @@
 2. detects human faces in front of it
 3. clips out and displays those images
 
-You can also see what time these images are taken by hovering over them.
+Also the number of pictures taken gets updated simultaneously below the video, and you can see what time these images are taken by hovering over them.
 
 [Overview](#1-overview)&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;[Setup](#2-setup)&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;[Notes](#3-notes)&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;[Resources](#4-resources)&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;[Contributions](#5-contributions)
 
