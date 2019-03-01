@@ -30,7 +30,7 @@
 
 ---
 
-*Also the number of pictures taken gets updated simultaneously below the video, and you can see what time these images are taken by hovering over them.*
+*Also the number of pictures taken gets updated simultaneously below the video, and you can see what time these images are taken by hovering over them!*
 
 ---
 
@@ -58,7 +58,10 @@ This app was built in 4 days to understand how Python works from scratch, during
 ## (A) Prerequisites
 
 ### 1. Install OpenCV
+<img src="https://upload.wikimedia.org/wikipedia/commons/5/53/OpenCV_Logo_with_text.png" alt="openCV" align="right" width="100px">
+
 I highly recommend you to build OpenCV instead of running `pip install opencv-python`. Either way would work, but be aware of the version of Python and pip in your machine.
+
 To manually install OpenCV, I would suggest you to read through [this article](https://www.pyimagesearch.com/2018/08/17/install-opencv-4-on-macos/).
 
 ### 2. Install the original repos
@@ -75,7 +78,7 @@ If you have two different versions of Python, make sure that you have created th
 # the name of your virtual environment can be different.
 workon cv
 ```
-Is virtual environment not familiar with you? Take a look at the [official documentation](https://docs.python.org/3/tutorial/venv.html).
+Is virtual environment not familiar with you? Take a look at [Python's official documentation](https://docs.python.org/3/tutorial/venv.html).
 
 ### 4. Run Flask and open the server
 Flask is going to run a server for you, which is normally at localhost:5000. To do that, run:
@@ -92,8 +95,8 @@ To kill the server, push `command + c` in the terminal.
 
 ## 3. Notes
 
-* It is **not** safe to keep running this app for long time if your memory and CPU are rather slow. One way to fix this issue is to give HAL19 access to cloud services to store all the pictures it has recorded.
-* Training OpenCV by seeding more data sets of human faces and improving accuracy of its face recognition functionality are the keys for HAL19 to keep growing. 
+* It is **not** safe to keep running this app for long time if your memory and CPU are rather slow. Therefore, one of the future plans to fix this issue is to give HAL19 access to *cloud services* to store all the pictures it has recorded.
+* Training OpenCV by seeding more data sets of human faces and improving accuracy of its face recognition functionality are the keys for HAL19 to keep growing. More plans will be coming up.
 
 ## 4. Resources
 These are the very useful to better understand how this app works:
