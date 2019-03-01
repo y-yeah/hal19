@@ -30,9 +30,9 @@
 
 ---
 
-*Also the number of pictures taken gets updated simultaneously below the video, 
+*Also the number of pictures taken gets updated simultaneously below the video,*
 
-and you can see what time these images are taken by hovering over them!*
+*and you can see what time these images are taken by hovering over them!*
 
 ---
 
