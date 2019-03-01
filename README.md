@@ -76,6 +76,12 @@ Flask is going to run a server for you, which is normally at localhost:5000. To 
 ```
 flask run
 ```
+**_⚠️To run Flask's debugger, run this instead:._**
+```
+FLASK_env=development flask run
+```
+
+
 To kill the server, push `command + c` in the terminal.
 
 ## 3. Notes
