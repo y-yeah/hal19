@@ -45,7 +45,7 @@ This app was built in 4 days to understand how Python works from scratch, during
 
 
 ## 💡**To use this app on the server**
-**_⚠️Currently this app works only at your locale. Take a look at [Notes](#3-notes)._**
+**_⚠️Currently this app works only at your local. Take a look at [Notes](#3-notes)._**
 
 
 ## 💡**To use this app locally**
