@@ -30,7 +30,9 @@
 
 ---
 
-*Also the number of pictures taken gets updated simultaneously below the video, and you can see what time these images are taken by hovering over them!*
+*Also the number of pictures taken gets updated simultaneously below the video, 
+
+and you can see what time these images are taken by hovering over them!*
 
 ---
 
@@ -42,7 +44,7 @@
 
 # 1. Overview
 
-This app was built in 4 days to understand how Python works from scratch, during the **Polyglottal week** of CC.
+This app was built in 4 days for the purpose of understanding how Python works from scratch, during the **Polyglottal week** of CC.
 
 <img src="./static/img/halDemo.png" width="100%">
 
